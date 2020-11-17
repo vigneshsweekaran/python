@@ -1,8 +1,28 @@
 import re
-text='isa python l	earn and \n itis easy 	to'
-#my_pat='^i[ts]'
-#my_pat="learn$"
-#my_pat=r"\blearn\b"
-#my_pat=r"\Blearn\B"
+text='ita python l	earn and \n itis easy 	to'
+
+
+######################### At the beginning ###########################
+my_pat='^i[ts]'
+print(re.findall(my_pat,text))
+
+
+######################## At the end ###################################
+#text='ita python and \n itis easy 	to learn'
+my_pat="learn$"
+print(re.findall(my_pat,text))
+
+
+######################## \b ############################################
+my_pat=r"\blearn\b"
+print(re.findall(my_pat,text))
+
+
+######################## \B #############################################
+my_pat=r"\Blearn\B"
+print(re.findall(my_pat,text))
+
+
+######################### \n #############################################
 my_pat=r"\n"
 print(re.findall(my_pat,text))
