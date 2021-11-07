@@ -1,5 +1,6 @@
+#!/usr/bin/python3
 vars = [
-    {
+    { 
         "name": "vignesh",
         "skill": "python",
         "age": 26
