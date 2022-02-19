@@ -1,0 +1,32 @@
+{
+    "patient1": {
+        "age": 65,
+        "disease": "diabetes",
+        "status": "alive"
+    },
+    "patient2": {
+        "age": 50,
+        "disease": "lung_cancer",
+        "status": "alive"
+    },
+    "patient3": {
+        "age": 72,
+        "disease": "colorectal_cancer",
+        "status": "alive"
+    },
+    "patient4": {
+        "age": 81,
+        "disease": "diabetes",
+        "status": "deceased"
+    },
+    "patient5": {
+        "age": 55,
+        "disease": "lung_cancer",
+        "status": "alive"
+    },
+    "patient6": {
+        "age": 78,
+        "disease": "lung_cancer",
+        "status": "deceased"
+    }
+}
