@@ -1,0 +1,3 @@
+ No of patient's infected with diabetes is 1 and the patient names are patient1
+ No of patient's infected with colorectal_cancer is 1 and the patient names are patient3
+ No of patient's infected with lung_cancer is 1 and the patient names are patient5
