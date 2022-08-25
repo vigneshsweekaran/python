@@ -1,4 +1,4 @@
-# program to find, whether he suqare output lies within the range
+# Program to find, whether he suqare output lies within the range
 
 def check(x,y,l,r):
     if l < x ** y <= r:
