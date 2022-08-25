@@ -7,6 +7,5 @@ def check(x,y,l,r):
         print(True)
     if x ** y in range(l+1, r+1):
         print(True)
-    
 
 check(2,3,4,10)
