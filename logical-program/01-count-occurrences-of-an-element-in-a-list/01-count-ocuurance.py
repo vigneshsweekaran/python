@@ -1,6 +1,5 @@
 # We keep a counter that keeps on increasing if the required element is found in the list.
 
-
 def count_occurence(list, x):
     counter = 0
     for element in list:
