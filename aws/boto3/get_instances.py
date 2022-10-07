@@ -6,7 +6,7 @@ from botocore.exceptions import ClientError
 import logging
 import json
 
-bucket_name = os.environ['BUCKET_NAME']
+# bucket_name = os.environ['BUCKET_NAME']
 
 header = ['Id', 'Name', 'State', 'Type', 'Image-id']
 data = []
@@ -17,7 +17,7 @@ file_name = "ec2-instances-"+unique_no+".csv"
 file_path = "/tmp/"+file_name
 
 def ec2_instance_details():
-    
+    name = ""
     ec2_resource = boto3.resource('ec2')
     
     for instance in ec2_resource.instances.all():
