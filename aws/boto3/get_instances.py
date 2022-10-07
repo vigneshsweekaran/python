@@ -28,7 +28,7 @@ def ec2_instance_details():
         for tag in instance.tags:
             if tag['Key'] == "Name":
                 name  = tag['Value']
-            data.append([id,name,state,type,image])
+        data.append([id,name,state,type,image])
 
 def create_csv_file(data):
     with open(file_path, 'w', encoding='UTF8', newline='') as f:
@@ -45,8 +45,7 @@ def create_csv_file(data):
 #     except ClientError as e:
 #         logging.error(e)
 
-if __name__ == __main__:
-    ec2_instance_details()
-    if data:
-      create_csv_file(data)
-    #   publish_to_s3()
+ec2_instance_details()
+if data:
+    create_csv_file(data)
+#   publish_to_s3()
