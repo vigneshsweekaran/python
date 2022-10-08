@@ -1,5 +1,5 @@
 import boto3
-import csv
+import xlsxwriter
 import os
 from botocore.exceptions import ClientError
 import logging
@@ -14,7 +14,7 @@ data = []
 
 date_time = datetime.now()
 unique_no = date_time.strftime("%y%m%d%H%M%S")
-file_name = "ec2-instances-"+unique_no+".csv"
+file_name = "ec2-instances-"+unique_no+".xlsx"
 file_path = "/tmp/"+file_name
 
 client_ec2 = boto3.client('ec2')
@@ -30,7 +30,7 @@ def get_ec2_cpu_utilization(instance_id):
             'Value': instance_id
             },
         ],
-        StartTime=datetime(2022, 10, 7),
+        StartTime=datetime(2022, 10, 8),
         EndTime=datetime.now(),
         Period=60,
         Statistics=[
@@ -58,13 +58,18 @@ def ec2_instance_details():
 
 
 
-def create_csv_file(data):
-    with open(file_path, 'w', encoding='UTF8', newline='') as f:
-        writer = csv.writer(f)
-        # write the header
-        writer.writerow(header)
-        # write multiple rows
-        writer.writerows(data)
+def create_xlsx(data):
+    workbook = xlsxwriter.Workbook(file_path)
+    worksheet = workbook.add_worksheet("Compute")
+    row = 0
+
+    for item in data :
+        item_length = len(item)
+        for index in range(item_length):
+            worksheet.write(row, index, item[index])
+        row += 1
+
+    workbook.close()
 
 
 # def publish_to_s3():
@@ -77,5 +82,5 @@ def create_csv_file(data):
 
 ec2_instance_details()
 if data:
-    create_csv_file(data)
+    create_xlsx(data)
 #   publish_to_s3()
