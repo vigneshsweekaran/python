@@ -1,0 +1,1 @@
+## Convert the base10 to binary and get the maximum consecutive 1s in the binary number
