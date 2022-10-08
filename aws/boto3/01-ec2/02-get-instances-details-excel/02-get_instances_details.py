@@ -43,6 +43,7 @@ def get_ec2_cpu_utilization(instance_id):
     )
     return response["Datapoints"][0]["Average"]
 
+
 def ec2_instance_details():
     response = client_ec2.describe_instances()
     
@@ -60,23 +61,11 @@ def ec2_instance_details():
             data.append([id,state,type,image,launch_time,state_transition_reason,cpu_utilization])
 
 
-
 def create_xlsx(data):
     workbook = xlsxwriter.Workbook(file_path, {'remove_timezone': True})
     worksheet_compute = workbook.add_worksheet("Compute")
     worksheet_users = workbook.add_worksheet("Users")
     worksheet_compute.add_table('A1:G7', {'data': data, 'columns': table_header})
-    # row = 1
-code 
-    # for index in range(len(header)):
-    #     worksheet.write(0, index, header[index])
-    
-    # for item in data :
-    #     item_length = len(item)
-    #     for index in range(item_length):
-    #         worksheet.write(row, index, item[index])
-    #     row += 1
-
     workbook.close()
 
 
