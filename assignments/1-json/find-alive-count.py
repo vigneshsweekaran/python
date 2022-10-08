@@ -19,6 +19,3 @@ for disease, details in output_data.items():
     count = details["count"]
     patient_names = ", ".join(details["patient_names"])
     print(f" No of patient's infected with {disease} is {count} and the patient names are {patient_names}")
-
-        
-
