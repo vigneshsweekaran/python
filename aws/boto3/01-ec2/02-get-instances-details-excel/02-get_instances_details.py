@@ -10,6 +10,9 @@ from datetime import datetime, timedelta
 # bucket_name = os.environ['BUCKET_NAME']
 
 header = ['Id', 'State', 'Type', 'Image-Id', 'Lauch-Time', 'Last state', 'Cpu Utilization']
+table_header = [{'header': column_name} for column_name in header]
+print(table_header)
+print(type(table_header))
 data = []
 
 date_time = datetime.now()
@@ -60,14 +63,19 @@ def ec2_instance_details():
 
 def create_xlsx(data):
     workbook = xlsxwriter.Workbook(file_path, {'remove_timezone': True})
-    worksheet = workbook.add_worksheet("Compute")
-    row = 0
-
-    for item in data :
-        item_length = len(item)
-        for index in range(item_length):
-            worksheet.write(row, index, item[index])
-        row += 1
+    worksheet_compute = workbook.add_worksheet("Compute")
+    worksheet_users = workbook.add_worksheet("Users")
+    worksheet_compute.add_table('A1:G7', {'data': data, 'columns': table_header})
+    # row = 1
+code 
+    # for index in range(len(header)):
+    #     worksheet.write(0, index, header[index])
+    
+    # for item in data :
+    #     item_length = len(item)
+    #     for index in range(item_length):
+    #         worksheet.write(row, index, item[index])
+    #     row += 1
 
     workbook.close()
 
