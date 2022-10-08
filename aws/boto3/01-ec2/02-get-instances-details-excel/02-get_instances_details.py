@@ -59,7 +59,7 @@ def ec2_instance_details():
 
 
 def create_xlsx(data):
-    workbook = xlsxwriter.Workbook(file_path)
+    workbook = xlsxwriter.Workbook(file_path, {'remove_timezone': True})
     worksheet = workbook.add_worksheet("Compute")
     row = 0
 
