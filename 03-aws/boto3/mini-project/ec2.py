@@ -42,7 +42,7 @@ def ec2_instance_details():
             state = instance['State']['Name']
             type = instance['InstanceType']
             image = instance['ImageId']
-            launch_time = instance['LaunchTime']
+            launch_time = instance['LaunchTime'].strftime("%d-%m-%Y")
             state_transition_reason = instance['StateTransitionReason']
             if state == "running":
                 cpu_utilization = get_ec2_cpu_utilization(id)
