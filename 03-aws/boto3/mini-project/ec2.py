@@ -3,7 +3,7 @@ import os
 from botocore.exceptions import ClientError
 import logging
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 # bucket_name = os.environ['BUCKET_NAME']
 data = []
@@ -34,15 +34,14 @@ def get_ec2_cpu_utilization(instance_id, start_time, end_time):
 
 def ec2_instance_details():
     response = client_ec2.describe_instances()
-
     # Set time range to cover the last full calendar month
     # Note that the end date is EXCLUSIVE (e.g., not counted)
-    now = datetime.datetime.utcnow()
+    now = datetime.now(timezone.utc)
     # Set the end of the range to start of the current month
-    end = datetime.datetime(year=now.year, month=now.month, day=1)
+    end = datetime(year=now.year, month=now.month, day=1, tzinfo=timezone.utc)
     # Subtract a day and then "truncate" to the start of previous month
-    start = end - datetime.timedelta(days=1)
-    start = datetime.datetime(year=start.year, month=start.month, day=1)
+    start = end - timedelta(days=1)
+    start = datetime(year=start.year, month=start.month, day=1, tzinfo=timezone.utc)
     
     for details in response['Reservations']:
         for instance in details['Instances']:
@@ -52,16 +51,12 @@ def ec2_instance_details():
             type = instance['InstanceType']
             image = instance['ImageId']
             launch_time = instance['LaunchTime']
-            print(f"launch_time : {launch_time}")
-            print(f"start_time: {start}")
             state_transition_reason = instance['StateTransitionReason']
             if state == "running":
-                if start <= launch_time:
-                    cpu_utilization = get_ec2_cpu_utilization(id. start, end)
-                elif start < launch_time <= end:
-                    cpu_utilization = get_ec2_cpu_utilization(id. launch_time, end)
-                elif launch_time > end:
-                    cpu_utilization = get_ec2_cpu_utilization(id. launch_time, datetime.now())
+                if launch_time <= start:
+                    cpu_utilization = get_ec2_cpu_utilization(id, start, end)
+                elif start < launch_time < end:
+                    cpu_utilization = get_ec2_cpu_utilization(id, launch_time, end)
             data.append([id,state,type,image,launch_time.strftime("%d-%m-%Y"),state_transition_reason,cpu_utilization])
     return data
 

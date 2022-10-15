@@ -8,7 +8,7 @@ unique_no = date_time.strftime("%y%m%d%H%M%S")
 file_name = "ec2-instances-"+unique_no+".xlsx"
 file_path = "/tmp/"+file_name
 
-compute_header = ['Id', 'State', 'Type', 'Image-Id', 'Launch-Time', 'Last state', 'Cpu Utilization']
+compute_header = ['Id', 'State', 'Type', 'Image-Id', 'Launch-Date', 'Last state', 'Cpu Utilization']
 compute_table_header = [{'header': column_name} for column_name in compute_header]
 
 users_header = ['Username', 'Create Date', 'Password last used', 'Access Key last used']
