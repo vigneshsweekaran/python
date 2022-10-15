@@ -15,8 +15,7 @@ users_header = ['Username', 'Create Date', 'Password last used', 'Access Key las
 users_table_header = [{'header': column_name} for column_name in users_header]
 
 def get_table_size(ec2_data):
-    output = [0, 0, len(ec2_data), len(ec2_data[0])-1]
-    return output
+    return [0, 0, len(ec2_data), len(ec2_data[0])-1]
 
 
 def create_xlsx(ec2_data, users_data):
