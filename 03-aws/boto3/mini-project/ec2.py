@@ -21,7 +21,7 @@ def get_ec2_cpu_utilization(instance_id):
             'Value': instance_id
             },
         ],
-        StartTime=datetime(2022, 10, 10),
+        StartTime=datetime(2022, 10, 15),
         EndTime=datetime.now(),
         Period=60,
         Statistics=[
