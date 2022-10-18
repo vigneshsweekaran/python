@@ -20,12 +20,16 @@ def get_table_size(ec2_data):
 
 def create_xlsx(ec2_data, users_data):
     workbook = xlsxwriter.Workbook(file_path, {'remove_timezone': True})
-    worksheet_compute = workbook.add_worksheet("Compute")
-    worksheet_users = workbook.add_worksheet("Users")
-    compute_table_size = get_table_size(ec2_data)
-    users_table_size = get_table_size(users_data)
-    worksheet_compute.add_table(compute_table_size[0], compute_table_size[1], compute_table_size[2], compute_table_size[3], {'data': ec2_data, 'columns': compute_table_header})
-    worksheet_users.add_table(users_table_size[0], users_table_size[1], users_table_size[2], users_table_size[3], {'data': users_data, 'columns': users_table_header})
+    
+    if ec2_data:
+        worksheet_compute = workbook.add_worksheet("Compute")
+        compute_table_size = get_table_size(ec2_data)
+        worksheet_compute.add_table(compute_table_size[0], compute_table_size[1], compute_table_size[2], compute_table_size[3], {'data': ec2_data, 'columns': compute_table_header})
+    
+    if user_data:
+        worksheet_users = workbook.add_worksheet("Users")
+        users_table_size = get_table_size(users_data)
+        worksheet_users.add_table(users_table_size[0], users_table_size[1], users_table_size[2], users_table_size[3], {'data': users_data, 'columns': users_table_header})
     workbook.close()
 
 
