@@ -48,11 +48,11 @@ while True:
         weeks = days / 7
         weeks_round = math.ceil(weeks)
         if km_driven < 900 :
-            amount_due = weeks_round * 190
+            amount_due = weeks_round * 3500
         elif km_driven >= 900 and km_driven < 1500:
-            amount_due = weeks_round * 190 + 100
+            amount_due = weeks_round * 3500 + 1750
         else:
-            amount_due = weeks_round * 190 + 200 + (km_driven - 1500) * 0.25 
+            amount_due = weeks_round * 3500 + 3500 + (km_driven - 1500) * 10
         print('Amount due is RS', amount_due)    
         break
     elif code[0].lower() == "q":
