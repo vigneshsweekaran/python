@@ -4,8 +4,8 @@ API_KEY = "36209f4e7d834a39a3a13212822211"
 
 def print_weather_data(city):
     url = "https://api.weatherapi.com/v1/current.json?key="+API_KEY+"&q="+city+"&aqi=no"
-    res = requests.get(url)
-    data = res.json()
+    response = requests.get(url)
+    data = response.json()
     choosed_city = data["location"]["name"]
     temperature_in_celsius = data["current"]["temp_c"]
     temperature_in_fahrenheit = data["current"]["temp_f"]
