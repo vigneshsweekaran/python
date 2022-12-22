@@ -25,20 +25,27 @@ def main():
     print("3 - Madurai")
     print("4 - Chennai")
     print("5 - Delhi\n")
-    choice = int(input('Choose the city from above list : '))
-    if choice == 1:
-        print_weather_data("kanyakumari")
-    elif choice == 2:
-        print_weather_data("tirunelveli")
-    elif choice == 3:
-        print_weather_data("madurai")
-    elif choice == 4:
-        print_weather_data("chennai")
-    elif choice == 5:
-        print_weather_data("delhi")
-    else:
-        print("\nPlease choose the correct city from the above list")
+
+    while True:
+        choice = int(input('Choose the city from above list : '))
+        if choice == 1:
+            print_weather_data("kanyakumari")
+            break
+        elif choice == 2:
+            print_weather_data("tirunelveli")
+            break
+        elif choice == 3:
+            print_weather_data("madurai")
+            break
+        elif choice == 4:
+            print_weather_data("chennai")
+            break
+        elif choice == 5:
+            print_weather_data("delhi")
+            break
+        else:
+            print("\nPlease choose the correct city from the above list")
 
 
 if __name__=='__main__':
-        main()
+    main()
