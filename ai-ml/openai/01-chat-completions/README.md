@@ -19,5 +19,5 @@ pip install openai
 
 ### Run the python program
 ```
-python app.py
+python3 app.py
 ```
