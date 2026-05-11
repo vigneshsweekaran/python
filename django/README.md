@@ -25,10 +25,18 @@ django-admin startproject quiz_demo
 python manage.py runserver
 ```
 
-## To add questions using django shell
+### To get into django shell
 ```
 python manage.py shell
 ```
+
+### To create django admin super user
+```
+python manage.py createsuperuser
+```
+
+
+## To add questions using django shell
 ```
 from quiz.models import Quiz, Question, Answer
 
